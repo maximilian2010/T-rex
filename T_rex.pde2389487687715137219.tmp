@@ -1,0 +1,416 @@
+boolean gameo ;
+boolean dang ;
+
+float megasuperpuper_pula ;
+float tir, ms ;
+float bon ;
+
+int money ;
+int hp;
+int boje_moi_a_ymru ;
+int g ;
+int play2;
+int boss ;
+int t, n ;
+int st;
+int ti_ne ;
+int sm ;
+int []bonu=new int[10000] ;
+int POMA ;
+int AHA ;
+int CAHR ;
+int BOGDAH ;
+
+
+PImage tirex3, tirex2, stir ;
+PImage pauk, sboss ;
+PImage ccp ;
+PImage back, menu ;
+PImage shop2 ;
+PImage bonus1 ;                                                        //переменые  для рисунков
+PImage gameover ;
+PImage play, start ;
+PImage popiplaytime, tirex, vrag ;
+PImage pula ;
+PImage noll, betisat, sto ;
+PImage ms2, ms3, sh, msiiina ;
+PImage tiler;
+PImage igra ;
+PImage player456 ;
+PImage player4562 ;
+PImage player4563 ;
+PImage OPEX ;
+
+String q="50 tiler" ;
+String w="50 tiler" ;
+String e="50 tiler" ;
+String r="20 tiler" ;
+String u="20 tiler" ;
+String y="20 tiler" ;
+
+void setup() {                                //команда сетап  
+  //orientation(LANDSCAPE) ;
+  size( displayWidth, displayHeight);  
+  KAPTUHKU() ;                                                                                  
+  HA4ALO() ;
+}
+
+void draw() {
+  switch(play2) {
+  case 0 :
+    background(200) ;   
+    image(start, displayWidth-400, displayHeight-111);
+    image(shop2, 20, 200) ;
+    image (igra, 500, 0, 150, 150) ;
+    break ;
+  case 1 :
+    case1() ;
+
+    break ;
+  case 2 :
+    background(200) ;
+    shop() ;
+
+
+    break ;
+  case 3 :
+    case3();
+    break ;
+  }
+  if (gameo) { 
+    GameOver();
+  }  
+}
+
+void mousePressed() {
+  switch (play2) {
+  case 0 :
+    if (mouseX>displayWidth-400 && mouseY>displayHeight-111) {
+      play2=1;
+    }
+    if (mouseX>20 && mouseY>200 && mouseX<220 && mouseY<370) {
+      play2=2;
+    }
+    if (mouseX>500 && mouseY>0 && mouseX<650 && mouseY<150) {
+      play2=3;
+    }
+
+
+    break ;
+  case 1 :
+
+    if (gameo && mouseX>0  && mouseY>0  && mouseX<185  &&  mouseY<75){
+      play2=0;
+      gameo=false ;
+      loop();
+    }      
+    if (mouseX>displayWidth/2) { 
+      g=20;                                                        //машинка и терекс передвежение наклон                        
+      n=sm ;                                                     
+      t=st ;          
+      ti_ne=8;
+    } else {                                                           
+      g=-20 ;                                                           //что сверху
+
+      n=-sm ;  
+      t=-st ;
+      ti_ne=-8;
+    } 
+    if (gameo && mouseX<950 && mouseX>700 && mouseY<displayHeight-300+250 && mouseY>displayHeight-300) {
+      st= 7;
+      sm=3;
+      gameo=false   ;
+      loop() ;
+    } 
+    if (gameo && mouseX>0 && mouseY>0 && mouseX<200 && mouseY<80) {
+      play2=0;
+    }
+    break ;
+
+  case 2 :
+    if (mouseX>600   &&  mouseY>600 && mouseX<750 && mouseY<690  && money>=20 ) {
+      r="Выкуплено";
+      money-=20;
+      sh=ms2;
+    } // image (ms2,600,600,150,150) ; 
+    if (mouseX>0 && mouseY>0 && mouseX<200 && mouseY<80) {
+      play2=0;
+    }
+    if (mouseX>900   &&  mouseY>600 && mouseX<1050 && mouseY<690 && money>=50  ) {
+      q="Выкуплено";
+      money-=50;
+      sh=ms3;
+    }
+    if (mouseX>300   &&  mouseY>600 && mouseX<450 && mouseY<690   ) {
+      sh=msiiina;
+    } 
+    if (mouseX>300 && mouseY>20 && mouseX<450 && mouseY<170  ) {
+      stir=tirex;
+    }
+    if (mouseX>600 && mouseY>20 && mouseX<750 && mouseY<170 && money>=20 ) {
+      u="Выкуплено";
+      money-=20;
+      stir = tirex2;
+    }
+    if (mouseX>900 && mouseY>20 && mouseX<1050 && mouseY>170 && money>=50) {
+      w="Выкуплено";
+      money-=50;
+      stir = tirex3;
+    }
+    if (mouseX >300 && mouseY>300 && mouseX<450 && mouseY>450) {
+      sboss = pauk;
+    }
+    if (mouseX > 600 && mouseY>300 && mouseX<750 && mouseY>450 && money>=20) {
+      y="Выкуплено";
+      money-=20;
+      sboss=ccp;
+    }
+    if (mouseX > 900 && mouseY>300 && mouseX<1050 && mouseY>450 && money>=50) {
+      e="Выкуплено";
+      money-=50;
+      sboss=popiplaytime;
+    }
+    break ;
+    case  3 :
+    
+    
+    if (gameo && mouseX>0  && mouseY>0  && mouseX<185  &&  mouseY<75){
+      play2=0;
+      gameo=false ;
+      loop();
+    }      
+        if (gameo && mouseX<950 && mouseX>700 && mouseY<displayHeight-300+250 && mouseY>displayHeight-300) {
+      st= 7;
+      sm=3;
+      gameo=false   ;
+      loop() ;
+    } 
+    
+  }
+}  
+
+void shop() {
+  image (msiiina, 300, 540, 150, 150) ;
+  image (ms2, 600, 540, 150, 150) ;
+  image (ms3, 900, 540, 150, 150) ;
+  image (back, 0, 0, 200, 80) ;
+  image (ccp, 600, 300, 150, 150) ;
+  image (pauk, 300, 300, 150, 150); 
+  image (popiplaytime, 900, 300, 150, 150) ;
+  image (tirex, 300, 20, 150, 150);
+  image (tirex2, 600, 20, 150, 150);  
+  image (tirex3, 900, 20, 150, 150);
+  image (tiler, displayWidth -150, 0, 140, 120) ;
+
+
+  textSize(32) ;
+  text( money+" tiler", displayWidth -130, 146) ;
+  text("выкуплено", 300, 720);
+  text("выкуплено", 300, 480);
+  text("выкуплено", 300, 200);
+  text(q, 900, 720);
+  text(e, 900, 480);
+  text(w, 900, 200);
+  text(r, 600, 720);
+  text(u, 600, 480);
+  text(y, 600, 200);
+}
+void GameOver() {
+  image (gameover, 300, displayHeight-600);
+  image (play, 700, displayHeight-300, 250, 250);
+  ms=displayWidth-400;
+  money +=boje_moi_a_ymru ;
+  boje_moi_a_ymru = 0 ;
+  tir=0;
+  vrag = stir  ;
+  boss=0 ;
+  image (back, 0, 0, 200, 80) ;
+  noLoop();
+}
+void KAPTUHKU() {
+  igra = loadImage("igra.png") ;
+  shop2= loadImage("shop.png") ;
+  pula = loadImage ("potron.png") ;
+  sto = loadImage ("100.png") ;
+  betisat =loadImage ("50.png") ;
+  noll = loadImage ("0.png") ;
+  tirex = loadImage ("tirex.jpg" ) ;                                  //загруски рисунков
+  msiiina = loadImage ("msiiina.png") ;
+  gameover = loadImage ("gameover.jpg") ;
+  play = loadImage ("play.ru.png" ) ;
+  popiplaytime =loadImage ("popiplaytime.jpg") ;  
+  bonus1 =loadImage("bonus.png") ;
+  start = loadImage ("start.png") ;
+  menu =loadImage ("menu.png") ;
+  ms2 = loadImage("top_ms2.png") ;
+  ms3 = loadImage("tesla.jpg") ;
+  back = loadImage("back.png") ;
+  tirex2 = loadImage ("tirex2.png") ;
+  tirex3 = loadImage("tirex3.png") ;
+  ccp = loadImage ("cccp.jpg") ;
+  pauk = loadImage ("aa_pauk.png") ;
+  tiler = loadImage ("tiler.png") ;
+  player456 = loadImage ("player456.png") ;
+  player4562 = loadImage ("player4562.png") ;
+  player4563 =loadImage ("player4563.png") ; 
+  OPEX=loadImage ("OPEX.png");
+}
+void HA4ALO () {
+  bon =displayWidth/2 ;
+  for (int i =0; i<10000; i+=1  ) {
+    bonu[i] = -1500*i;
+  }
+  stir =tirex ;
+  vrag=stir ;
+  ti_ne=8;
+  n =3   ;
+  tir =displayWidth/3 ;
+  t=7 ;
+  g= 8 ;
+  gameo=false ;
+  ms=2*displayWidth/3 ;
+  boss=0 ;    //TODO
+  megasuperpuper_pula=ms;
+  hp=1;
+  boje_moi_a_ymru=0;
+  sm=3;
+  st=7;
+  sh = msiiina ;
+  sboss =popiplaytime ;
+  money=1234567890;
+  POMA= displayWidth;
+  AHA=displayWidth-300;
+}
+void case1() {
+  background(0, 0, 255)    ;                                         // для фона 
+  fill(0, 254, 0) ;
+  translate(displayWidth/2, displayHeight/2) ;
+  rotate(radians(g)) ;
+  translate(-displayWidth/2, -displayHeight/2);
+  rect(0, displayHeight -170, displayWidth, 600) ;
+  noStroke() ;
+  fill(255) ;  
+  ellipse(1000, 100, 80, 80) ;
+  ellipse(1040, 100, 80, 80) ;                                                                                            
+  ellipse(1080, 100, 80, 80) ;
+
+  for (int i =0; i<10000; i++) {
+
+    image(bonus1, bon, bonu[i]) ;
+
+    bonu[i]+=7;
+
+    if (displayHeight-335<bonu[i]+130 && displayHeight-200>bonu[i] && bon+130>ms &&bon<ms+230) {
+      n=0;
+    }
+  }
+
+  image(vrag, tir, displayHeight-520) ;                             //где нахлдится тирекс и машинка
+  image(sh, ms, displayHeight-335) ;
+
+  if (gameo) { 
+      image (back, 0, 0, 200, 80) ;
+    GameOver();
+  }
+
+  ms+=n ;                                                         //скорасть
+  tir+=t  ;
+
+  textSize(32) ;
+  text(boje_moi_a_ymru, displayWidth/2, 39) ;
+
+  if (boss>=5) {
+    vrag=sboss;
+    image(pula, megasuperpuper_pula, displayHeight/2);
+    megasuperpuper_pula+=ti_ne ;
+    if (tir+270>megasuperpuper_pula && tir<megasuperpuper_pula) {
+      hp++ ;
+      megasuperpuper_pula=ms ;
+    }
+    switch(hp) {
+    case 1: 
+      image(sto, 150, 200);
+      break ;
+    case 2:
+      image(betisat, 150, 200) ;
+      break ;
+    case 3:
+      image(noll, 200, 200);
+      break ;
+    default :
+      boss=0 ;
+      hp=1 ;
+      vrag=stir ;
+    }
+  }
+
+  if (ms<-500) {
+    ms=displayWidth/2;
+    gameo=true;
+  }
+  if (ms>displayWidth+100) {
+    ms=displayWidth/2;
+    gameo=true;
+  }   
+
+  if (tir<-500) {
+    tir=random(ms+150, displayWidth);
+    boss+=1;
+    boje_moi_a_ymru+=1;
+  }
+  if (tir>displayWidth+100) {
+    tir=random(ms-300);
+    boss+=1;
+    boje_moi_a_ymru+=1 ;
+  }  
+
+  if (tir+250>ms && tir<ms+150) {
+    gameo=true;
+  }
+                                     
+  translate(displayWidth/2, displayHeight/2) ;
+  rotate(radians(-g)) ;
+  translate(-displayWidth/2, -displayHeight/2);                                //отмена наклона на наклона кнопки 
+}
+void case3() {
+  background(0, 0, 255) ;
+  fill (#FCF503);
+  rect(0, displayHeight -170, displayWidth, 600) ;
+  image (OPEX, POMA, 295);
+  image (OPEX, AHA, 295);
+  fill(#FFF81A); 
+  //._. .-. :>  :< ,_, |: :[ :] :} %_% $o$                               
+  if (mousePressed) {
+    POMA-= 16;
+    AHA-=20 ;
+    if (POMA<-130) {
+      POMA=displayWidth+290;
+    }
+    if (AHA<-130 ) {
+      AHA=displayWidth+290;
+    }
+    if (frameCount%8>3) {
+      image (player4562, 100, 420);
+    } else { 
+      image (player4563, 100, 420);
+    }
+  } else {
+    image(player456, 100, 420);
+  }
+  fill(51, 252, 48);
+  rect(displayWidth-200, 0, 250, 150);
+  if (frameCount%150>100) {
+    fill(51, 252, 48);
+    rect(displayWidth-200, 0, 250, 150);
+  } else if (frameCount%150<50) {
+    fill (#FEFF00);
+    rect(displayWidth-200, 0, 250, 150);
+  } else {
+    fill(#FC0307) ;
+    rect(displayWidth-200, 0, 250, 150);
+
+    if (mousePressed) {
+      gameo = true;
+    }
+  }
+}                                                                                                                                                                            
